@@ -23,9 +23,17 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        $user = $this->route()->user;
+
+        $unique = 'unique:users,email';
+
+        if ($user!==null){
+            $unique.=','.$user->id;
+        }
+
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|'.$unique,
             'phone' => 'required',
             'group_id' => ['required', function($attributes, $value, $fail){
                 if ($value==0){

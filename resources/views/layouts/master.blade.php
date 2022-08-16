@@ -12,5 +12,7 @@
     <div class="container py-5">
         @yield('content')
     </div>
+
+    <script type="text/javascript" src="{{asset('assets/js/scripts.js')}}"></script>
 </body>
 </html>
